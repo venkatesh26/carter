@@ -1,0 +1,788 @@
+#hero
+{
+     background-size: cover;
+    background-image:url('../uploads/bg01.png');
+
+}
+
+div#order
+{
+     background-size: cover;
+    background-image:url('../uploads/order.jpg');
+
+}
+
+#signup .bg-image
+{
+    background-image:url('../uploads/order.jpg');
+    background-repeat: no-repeat;
+    height: 500px;
+
+}
+
+.nav-tabs{
+    border:none;
+}
+
+p,body,li,ul,ol
+{
+    font-family: 'Roboto Slab', serif !important;
+    font-family: 'Poppins' !important;
+}
+
+h1,h2,h3,h4,h5,h6
+{
+   font-family: 'Poppins', sans-serif !important;
+   font-weight:800 !important;
+}
+
+.nav-tabs .nav-link{
+    font-family: 'Poppins', sans-serif !important;
+}
+
+.sanbrand
+{
+    color:#ef7a70 !important;
+
+}
+
+.hero-main-content p {
+    color: #333;
+    font-size: 19px;
+    margin-bottom: 30px;
+    font-weight: 500;
+    background-color: #FEECEC;
+    display: inline-block;
+    padding: 10px;
+}
+
+.hero-main-content {
+    /* padding: 73px 0; */
+    padding-top: 45px !important;
+    padding-bottom: 220px !important;
+}
+
+.hero-main-content h2 {
+    font-size: 38px !important;
+    font-family: 'Roboto Slab', serif !important;
+    margin-bottom: 50px !important;
+}
+
+.hero-main-content p{
+    margin-bottom:10px !important;
+}
+
+.single-restaurants img {
+    border-radius: 11px;
+}
+
+h3#category_title {
+    text-align: center;
+    margin-bottom: 40px !important;
+}
+
+h3#best_restaurant_title{
+    text-align: center;
+    margin-bottom: 40px !important;
+}
+
+h3#find_city_title{
+    text-align: center;
+    margin-bottom: 40px !important;
+}
+
+
+div#best_restaurant {
+    background-color: #ffffff;
+}
+
+div#blog{
+    background-color: #f1f1f1;
+    padding-bottom:50px;
+}
+
+div#howitworks {
+    background-color: #fff;
+}
+
+
+.whowe img
+{
+width: 180px;
+    margin: 20px auto;
+    display: block;
+    border-radius: 10px;
+    border: 1px solid #ef7a70;
+}
+
+h3.whwetit {
+    text-align: center;
+    color: #f15f53;
+    font-size: 23px;
+    margin-top: 20px;
+}
+
+ h3.whwetit span
+{
+  border: 1px solid #f15f53;
+    /* width: 30px; */
+    padding: 2px 15px;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+p.whwedisc {
+    text-align: center;
+}
+
+p.whoweband {
+    color: #ef7a70;
+    margin-bottom: 0px;
+    font-weight: 600;
+    font-size: 18px;
+    font-family: 'Poppins' !important;
+}
+
+.whowehead span{
+     color: #ef7a70;
+}
+
+p.whowedesc {
+    font-size: 20px;
+    font-family: 'Poppins' !important;
+    line-height: 30px;
+    color:#343434;
+}
+
+
+
+
+.carousel-indicators li
+{
+    background-color: #0c0b0b;
+}
+
+
+.blog img
+{
+   width:100%;
+}
+
+@media (min-width: 768px){
+ .col-md-3 {
+    float:left !important;
+}
+}
+
+footer#footer {
+    background-color: #251e01;
+}
+
+#footer img{
+    max-width:200px !important;
+}
+
+#footer h3 {
+    font-size: 25px;
+    color: #fff;
+}
+
+#footer a{
+   color: #ffffff;
+}
+
+#footer p{
+   color: #ffffff;
+}
+
+#footer a:hover{
+
+        color: #f15f53;
+}
+
+#footer li{
+    margin-top: 12px;
+}
+
+.footer-main-content {
+    padding: 18px 0 !important;
+    border:none!important;
+    background-color:#0e0e0e !important;
+}
+
+
+.social-icons li {
+    display: inline-block;
+    vertical-align: middle;
+    line-height: 1;
+}
+
+ul.social-icons {
+    padding-left: 0px !important;
+}
+
+ .social-icons li a {
+    font-size: 16px;
+    display: block;
+    text-align: center;
+    color: #000 !important;
+    border: 1px solid #ffffff;
+    background-color: #ffffff;
+    padding: 8px;
+    border-radius: 2px;
+    line-height: 1;
+    width: 34px;
+    height: 34px;
+}
+
+
+.nav-tabs .nav-item.show .nav-link, .nav-tabs .nav-link.active {
+    color: #ffffff !important;
+    background-color: #605d54 !important;
+    border-color: #605d54 !important;
+}
+
+
+.nav-tabs .nav-link {
+    font-size: 22px;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    color: #000;
+    border-color: #7c7a73;
+    margin-right: 15px;
+}
+
+.search-input input {
+    /*width: 46% !important;*/
+}
+
+.search-input input{
+    margin-right:0px !important;
+    padding-left: 20px !important;
+}
+
+.food-search-bar {
+    padding: 0px !important;
+    background-color: #5f53f140;
+    border-bottom-left-radius: 40px;
+    border-top-right-radius: 40px;
+    border-bottom-right-radius: 40px;
+    box-shadow: none !important;
+}
+
+
+.search-input input {
+
+    background: transparent !important;
+
+    height: 40px !important;
+    border:none !important;
+}
+
+.hero-main-content img{
+    width:60px !important;
+    float: right;
+    height:60px !important;
+}
+
+.slider-search-content-area {
+    padding-top: 10px !important;
+}
+
+input#location_input {
+    /*border-right: 3px solid #605d54 !important;*/
+}
+
+.food-search-bar {
+    max-width: 550px;
+}
+
+.san-description{
+    max-width:700px;
+    text-align:center;
+    margin:0 auto;
+     font-family: 'Poppins' !important;
+    margin-bottom:40px !important;
+}
+
+
+.single-restaturants {
+    background-color: #f8f8f8;
+}
+
+.restaturants-content {
+    padding: 15px;
+    min-height: 110px;
+}
+
+
+.btn{
+border-radius:20px !important;
+}
+
+
+
+.register-card-body input:not(input[type='radio']):not(input[type='checkbox']), textarea, select {
+
+    border-color: #f07a70 !important;
+    border-left: none !important;
+    border-top: none !important;
+    border-bottom: 2px solid #f07a70 !important;
+    border-right: none !important;
+    border-radius: 0px !important;
+
+}
+
+/* Apr 01 2022 */
+/* form input[type='radio'] {
+    height: 20px;
+    width: 50px;
+} */
+.pb-6 {
+    padding-bottom: 3.5rem !important;
+}
+.pb-19 {
+    padding-bottom: 1.9rem !important;
+}
+.radio-input {
+    border-color: #e0dbdb;
+    border-left: none !important;
+    border-top: none !important;
+    border-right: none !important;
+    border-radius: 0px !important;
+    border: 1px solid #ced4da;
+
+    border-color: #f07a70 !important;
+    border-bottom: 2px solid #f07a70 !important;
+}
+* {
+    margin: 0;
+    padding: 0
+}
+
+html {
+    height: 100%
+}
+
+#grad1 {
+    background-color: #9C27B0;
+    background-image: linear-gradient(120deg, #FF4081, #81D4FA);
+}
+
+#msform {
+    text-align: center;
+    position: relative;
+    margin-top: 20px
+}
+
+#msform fieldset .form-card {
+    background: white;
+    border: 0 none;
+    border-radius: 0px;
+    box-shadow: 0 2px 2px 2px rgba(0, 0, 0, 0.2);
+    padding: 20px 40px 30px 40px;
+    box-sizing: border-box;
+    width: 94%;
+    margin: 0 3% 20px 3%;
+    position: relative
+}
+
+#msform fieldset {
+    background: white;
+    border: 0 none;
+    border-radius: 0.5rem;
+    box-sizing: border-box;
+    width: 100%;
+    margin: 0;
+    padding-bottom: 20px;
+    position: relative
+}
+
+#msform fieldset:not(:first-of-type) {
+    display: none
+}
+
+#msform fieldset .form-card {
+    text-align: left;
+    color: #9E9E9E
+}
+
+#msform input,
+#msform textarea {
+    padding: 0px 8px 4px 8px;
+    border: none;
+    border-bottom: 1px solid #ccc;
+    border-radius: 0px;
+    margin-bottom: 25px;
+    margin-top: 2px;
+    width: 100%;
+    box-sizing: border-box;
+    font-family: montserrat;
+    color: #2C3E50;
+    font-size: 16px;
+    letter-spacing: 1px
+}
+
+#msform input:focus,
+#msform textarea:focus {
+    -moz-box-shadow: none !important;
+    -webkit-box-shadow: none !important;
+    box-shadow: none !important;
+    border: none;
+    font-weight: bold;
+    border-bottom: 2px solid skyblue;
+    outline-width: 0
+}
+
+#msform .action-button {
+    width: 100px;
+    background: skyblue;
+    font-weight: bold;
+    color: white;
+    border: 0 none;
+    border-radius: 0px;
+    cursor: pointer;
+    padding: 10px 5px;
+    margin: 10px 5px
+}
+
+#msform .action-button:hover,
+#msform .action-button:focus {
+    box-shadow: 0 0 0 2px white, 0 0 0 3px skyblue
+}
+
+#msform .action-button-previous {
+    width: 100px;
+    background: #616161;
+    font-weight: bold;
+    color: white;
+    border: 0 none;
+    border-radius: 0px;
+    cursor: pointer;
+    padding: 10px 5px;
+    margin: 10px 5px
+}
+
+#msform .action-button-previous:hover,
+#msform .action-button-previous:focus {
+    box-shadow: 0 0 0 2px white, 0 0 0 3px #616161
+}
+
+select.list-dt {
+    border: none;
+    outline: 0;
+    border-bottom: 1px solid #ccc;
+    padding: 2px 5px 3px 5px;
+    margin: 2px
+}
+
+select.list-dt:focus {
+    border-bottom: 2px solid skyblue
+}
+
+.card {
+    z-index: 0;
+    border: none;
+    border-radius: 0.5rem;
+    position: relative
+}
+
+.fs-title {
+    font-size: 25px;
+    color: #2C3E50;
+    margin-bottom: 10px;
+    font-weight: bold;
+    text-align: left
+}
+
+#progressbar {
+    margin-bottom: 30px;
+    overflow: hidden;
+    color: lightgrey
+}
+
+#progressbar .active {
+    color: #000000
+}
+
+#progressbar li {
+    list-style-type: none;
+    font-size: 12px;
+    width: 25%;
+    float: left;
+    position: relative
+}
+
+#progressbar #account:before {
+    font-family: FontAwesome;
+    content: "\f023"
+}
+
+#progressbar #personal:before {
+    font-family: FontAwesome;
+    content: "\f007"
+}
+
+#progressbar #payment:before {
+    font-family: FontAwesome;
+    content: "\f09d"
+}
+
+#progressbar #confirm:before {
+    font-family: FontAwesome;
+    content: "\f00c"
+}
+
+#progressbar li:before {
+    width: 50px;
+    height: 50px;
+    line-height: 45px;
+    display: block;
+    font-size: 18px;
+    color: #ffffff;
+    background: lightgray;
+    border-radius: 50%;
+    margin: 0 auto 10px auto;
+    padding: 2px
+}
+
+#progressbar li:after {
+    content: '';
+    width: 100%;
+    height: 2px;
+    background: lightgray;
+    position: absolute;
+    left: 0;
+    top: 25px;
+    z-index: -1
+}
+
+#progressbar li.active:before,
+#progressbar li.active:after {
+    background: skyblue
+}
+
+.radio-group {
+    position: relative;
+    margin-bottom: 25px
+}
+
+.radio {
+    display: inline-block;
+    width: 204;
+    height: 104;
+    border-radius: 0;
+    background: lightblue;
+    box-shadow: 0 2px 2px 2px rgba(0, 0, 0, 0.2);
+    box-sizing: border-box;
+    cursor: pointer;
+    margin: 8px 2px
+}
+
+.radio:hover {
+    box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.3)
+}
+
+.radio.selected {
+    box-shadow: 1px 1px 2px 2px rgba(0, 0, 0, 0.1)
+}
+
+.fit-image {
+    width: 100%;
+    object-fit: cover
+}
+
+h5.ssft {
+    display: block;
+    width: 100%;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.register-progress ul li.active span {
+    background: #f15e53!important;
+}
+
+/* .register-progress ul li.active .register-progress-body {
+    color: #f15e53 !important;
+} */
+.cpb-08 {
+    padding-bottom: 0.8rem!important;
+}
+form label.error{
+    color: #f15e53;
+}
+form input, form .custom-checkbox {
+    padding-left: 0 !important;
+}
+
+.btn.btn-theme {
+    background: #f15f53 none repeat scroll 0 0 !important;
+    border: medium none;
+    border-radius: 2px;
+    color: #fff;
+    cursor: pointer;
+    display: inline-block;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    line-height: 1;
+    margin-bottom: 0;
+    padding: 13px 25px;
+    text-align: center;
+    text-transform: uppercase;
+    touch-action: manipulation;
+    transition: all 0.3s ease 0s;
+    vertical-align: middle;
+    white-space: nowrap;
+    border-radius: 20px !important;
+
+    /* text-align: center;
+    color: #f15f53;
+    font-size: 23px;
+    margin-top: 20px; */
+}
+
+.btn.btn-theme:hover {
+    color: #fff !important;
+    background-color: #f15f53;
+    border-color: #f15f53;
+}
+
+.register-progress ul > li:after {
+    content: '';
+    position: absolute;
+    display: block;
+    height: 5px;
+    z-index: -1;
+}
+
+.register-progress ul > li:nth-child(1):after {
+    background:#f1f1f1;
+    width: 11%;
+    /* top: 34%; */
+    top: 221px;
+    left: 37.5%;
+}
+.register-progress ul > li:nth-child(2):after {
+    background:#f1f1f1;
+    width: 10.5%;
+    /* top: 34%; */
+    top: 221px;
+    left: 50%;
+}
+.register-progress ul > li.completed:nth-child(1):after {
+    background: #f15e53;
+    width: 12%;
+    /* top: 34%; */
+    top: 221px;
+    left: 37.5%;
+}
+.register-progress ul > li.completed:nth-child(2):after {
+    background: #f15e53;
+    width: 12%;
+    /* top: 34%; */
+    top: 221px;
+    left: 49.5%;
+}
+.menu-signup a {
+    color: #fff !important;
+}
+.error {
+    color: red;
+}
+button[data-dismiss="modal"] {
+    border: none;
+    background: no-repeat;
+}
+form[name='step1_form'] .error, form[name='step2_form'] .error, form[name='step3_form'] .error{
+    margin-bottom: 10px;
+}
+.phone_number_d {
+    margin-top: 1.75rem !important;
+}
+form[name='step1_form'] .form-floating>label, form[name='step2_form'] .form-floating>label, form[name='step3_form'] .form-floating>label {
+    padding: 0rem 0rem;
+}
+.bl {
+    margin-bottom: 55px;
+}
+.form-floating>textarea {
+    line-height: 3.25 !important;
+}
+.signup-page .howitworks p {
+    font-family: 'Poppins' !important;
+}
+.signup-page .reg-content .reg-btn {
+    gap: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.signup-page .reg-content .reg-btn .btn {
+    font-size: 1rem;
+    text-transform: none;
+}
+.signup-page .reg-content .reg-btn .btn:hover {
+    color: #ffffff;
+}
+/* form[name='step1_form'] label[id$="-error"], form[name='step2_form'] label[id$="-error"], form[name='step3_form'] label[id$="-error"]{
+    display: block;
+    margin-top: -30px;
+}
+
+.form-group.floating>.flabel {
+    bottom: 35px;
+    left: 0px;
+    position: relative;
+    background-color: white;
+    padding: 0px 5px 0px 5px;
+    font-size: 17px;
+    transition: 0.1s;
+    pointer-events: none;
+    font-weight: 500 !important;
+    transform-origin: bottom left;
+}
+
+.form-control.floating:focus~.flabel{
+    transform: translate(1px,-85%) scale(0.80);
+    opacity: .8;
+    color: #005ebf;
+} */
+
+/* .form-control.floating:valid~label{
+    transform-origin: bottom left;
+    transform: translate(1px,-85%) scale(0.80);
+    opacity: .8;
+} */
+
+@media (max-width: 767px) {
+    .register-progress ul li {
+        display: block !important;
+    }
+    .register-progress ul > li:nth-child(1):after, .register-progress ul > li:nth-child(2):after {
+        display: none;
+    }
+    .register-progress li:nth-child(1) .register-progress-body {
+        margin-left: -8px;
+        margin-bottom: 10px;
+    }
+    .register-progress li:nth-child(2) .register-progress-body {
+        margin-left: -10px;
+        margin-bottom: 10px;
+    }
+    .register-progress li:nth-child(3) .register-progress-body {
+        margin-left: -22px;
+        margin-bottom: 10px;
+    }
+    .signup-page .reg-content .reg-btn {
+        gap: 1rem;
+        display: flex;
+        justify-content: space-between;
+        flex-direction: column;
+    }
+}
+/*
+div, p {
+    border: 1px solid red;
+} */
