@@ -1,5 +1,6 @@
 @extends('layouts.backend.app')
 @section('content')
+@php $currency=\App\Options::where('key','currency_icon')->select('value')->first(); $customerInfo=json_decode($info->data); @endphp 
 <div class="section-body">
  <div class="row">
   <div class="col-12 col-md-12 col-lg-7">
@@ -10,13 +11,13 @@
       </div>
       <div class="card-body">
         <div class="table-responsive">
-          <table class="table table-hover text-center">
+          <!--<table class="table table-hover text-center">
             <thead>
               <tr>
 
                 <th scope="col">{{ __('Item Name') }}</th>
                 <th scope="col">{{ __('Quantity') }}</th>
-                <!-- <th scope="col">{{ __('Total Amount') }}</th> -->
+
               </tr>
             </thead>
             <tbody>
@@ -35,12 +36,60 @@
 
                 <td>{{ $itemrow["product_name"] ?? '' }}</td>
                 <td>{{ $itemrow["qty"] ?? '' }}</td>
-                <!-- <td>{{  $itemrow["total_amount"]}}</td> -->
+
 
               </tr>
               @endforeach
             </tbody>
-          </table>
+          </table>-->
+             <div class="profile-widget package-info">
+                <div class="card-header text-center">
+                  <h4>Package Information</h4>
+                </div>
+                <div class="profile-widget-header"> <?php 
+                  $total_amount = $info->total;
+                  $dueAmount = 0;
+
+                  $dueAmount = (env('DEPOSIT_PERCENT') / 100) * $info->total;
+
+                  $balanceAmount = $info->total - $dueAmount;
+
+                ?> @foreach($info["orderlistpack"] as $key => $itemrow) <?php
+                    $item_list=[];
+                    foreach($itemrow["packages"]["orderItems"] as $key1 => $itemrow1){
+                      array_push($item_list, $itemrow1["product_name"]);
+                    }
+                    $item_list_str = implode(',', $item_list);
+                  ?> <div class="profile-widget-description">
+                    <div class="profile-widget-name">
+                      <i class='fa fa-gift'></i> {{ __('Package Name') }}: <div class="text-muted d-inline font-weight-normal">{{ $itemrow["packages"]["name"] ?? '' }}</div>
+                    </div>
+                    <div class="profile-widget-name">
+                      <i class="fa fa-bars" aria-hidden="true"></i> {{ __('Items') }}: <div class="text-muted d-inline font-weight-normal">
+                        {{ $item_list_str ?? '' }}
+                      </div>
+                    </div>
+                    <div class="profile-widget-name">
+                      <i class='fa fa-user'></i> {{ __('Total Quantity') }}: <div class="text-muted d-inline font-weight-normal">{{ $itemrow["qty"] ?? '' }}</div>
+                    </div>
+                  </div> @endforeach 
+
+                  <div class="card-header text-center">
+                    <h4>Billing Details</h4>
+                  </div>
+                  <div class="profile-widget-description price-section">
+                    <div class="profile-widget-name" style="border-bottom:1px solid #ddd"> {{ __('Amount Due') }}
+                      <div class="text-muted d-inline font-weight-normal" style="float:right">{{ strtoupper($currency->value) }} {{ $balanceAmount ?? '' }}</div>
+                    </div>
+                    <div class="profile-widget-name" style="border-bottom:1px solid #ddd"> {{ __('Amount Paid') }}
+                      <div class="text-muted d-inline font-weight-normal" style="float:right">{{ strtoupper($currency->value) }} {{ $dueAmount ?? '' }}</div>
+                    </div>
+                    <div class="profile-widget-name" style="border-bottom:1px solid #ddd"> {{ __('Total Amount') }}
+                      <div class="text-muted d-inline font-weight-normal" style="float:right">{{ strtoupper($currency->value) }} {{ $total_amount ?? '' }}</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
         </div>
         <div class="text-left">
           <!-- <p><b>Subtotal: </b>  {{ $subtotal }}</p> -->
@@ -205,14 +254,12 @@
            </div>
          </div>
        </div>
-       @php
-       $customerInfo=json_decode($info->data);
-
-       @endphp
 
        <div class="profile-widget-description">
         <div class="profile-widget-name">{{ __('Event Date') }}:
+          @if(isset($customerInfo->event_date)):
           <div class="text-muted d-inline font-weight-normal"> {{ date('d-m-Y h:i A', strtotime($customerInfo->event_date)) }}</div>
+          @endif
         </div>
 
         <div class="profile-widget-name">{{ __('Customer Name') }}:

@@ -12,6 +12,11 @@ class Order extends Model
     {
     	return $this->hasMany('App\Ordermeta')->with('products');
     }
+    
+    public function orderlistpack()
+    {
+        return $this->hasMany('App\Ordermeta')->with('packages');
+    }
 
     public function vendorinfo()
     {

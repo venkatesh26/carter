@@ -12,13 +12,10 @@ class OrderController extends Controller
 	public function details($id)
 	{
 		$id = decrypt($id);
-		// $info=Order::where('user_id',Auth::id())->with('orderlist','vendorinfo','riderinfo','coupon','orderlog','riderlog','liveorder')->find($order_id);
-		// if (empty($info)) {
-		// 	abort(404);
-		// }
 		$orderdetails = OrderDetails::where('order_id',$id)->get()->toArray();
-
-		$info = Order::with('orderlist','vendorinfo','coupon','orderlog')->find($id);
+        $info = Order::with('orderlist', 'orderlistpack','vendorinfo','coupon','orderlog')->find($id);
+/*        echo "<pre>";
+        print_r($info->toArray());die;*/
 		if (empty($info)) {
 			abort(404);
 		}

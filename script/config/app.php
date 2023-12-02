@@ -161,7 +161,7 @@ return [
         Illuminate\Session\SessionServiceProvider::class,
         Illuminate\Translation\TranslationServiceProvider::class,
         Illuminate\Validation\ValidationServiceProvider::class,
-        Lpress\Verify\VerfiyServiceProvider::class,
+        //Lpress\Verify\VerfiyServiceProvider::class,
         Amcoders\Lpress\LpressServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
 

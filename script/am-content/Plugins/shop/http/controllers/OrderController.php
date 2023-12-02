@@ -133,7 +133,7 @@ class OrderController extends controller
     public function show($id)
     {
       $auth_id=Auth::id();
-      $info = Order::with('orderlist','vendorinfo','riderinfo','coupon','orderlog','riderlog')->where('vendor_id',$auth_id)->find($id);
+      $info = Order::with('orderlist','orderlistpack','vendorinfo','riderinfo','coupon','orderlog','riderlog')->where('vendor_id',$auth_id)->find($id);
       if (empty($info)) {
           abort(404);
       }

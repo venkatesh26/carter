@@ -12,5 +12,10 @@ class Ordermeta extends Model
     {
     	return $this->hasOne('App\Terms','id','term_id')->select('id','title','type');
     }
+
+    public function packages()
+    {
+    	return $this->hasOne('App\Package','id','term_id')->select('id','name')->with('orderItems');
+    }
     
 }

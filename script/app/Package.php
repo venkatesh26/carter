@@ -21,6 +21,11 @@ class Package extends Model
 		return $this->hasMany(PackageItem::class,'package_id','id');
 	}
 
+	public function orderItems()
+	{
+		return $this->hasMany(OrderDetails::class,'package_id','id');
+	}
+
 	
 	// public function posts()
 	// {
