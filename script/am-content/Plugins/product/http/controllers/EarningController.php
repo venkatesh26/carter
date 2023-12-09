@@ -26,12 +26,14 @@ class EarningController extends controller
 
 	public function date(Request $request)
 	{
+
 		if (!Auth()->user()->can('earning.order.report')) {
 			return abort(401);
 		}
 		$start_date = Carbon::parse($request->start)->format('Y-m-d H:i:s');
 		$end_date = Carbon::parse($request->end)->format('Y-m-d H:i:s');
 		$total_earnings_paginate = Order::where('status',1)->whereBetween('created_at',[$start_date,$end_date])->latest()->select('commission','created_at','updated_at')->paginate(20); 
+
 		$total_earnings = Order::where('status',1)->select('commission','created_at','updated_at')->sum('commission'); 
 		$monthly_earnings =  Order::where('status',1)->whereMonth('created_at', Carbon::now()->month)->select('commission')->sum('commission');
 		$year_earnings =  Order::where('status',1)->whereYear('created_at', Carbon::now()->year)->select('commission')->sum('commission');

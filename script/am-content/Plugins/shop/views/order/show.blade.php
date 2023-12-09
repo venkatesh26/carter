@@ -1,6 +1,8 @@
 @extends('layouts.backend.app')
 @section('content')
-@php $currency=\App\Options::where('key','currency_icon')->select('value')->first(); $customerInfo=json_decode($info->data); @endphp 
+@php $currency=\App\Options::where('key','currency_icon')->select('value')->first(); $customerInfo=json_decode($info->data);
+$total_amount = $info->total;
+@endphp 
 <div class="section-body">
  <div class="row">
   <div class="col-12 col-md-12 col-lg-7">
@@ -47,7 +49,6 @@
                   <h4>Package Information</h4>
                 </div>
                 <div class="profile-widget-header"> <?php 
-                  $total_amount = $info->total;
                   $dueAmount = 0;
 
                   $dueAmount = (env('DEPOSIT_PERCENT') / 100) * $info->total;
@@ -228,7 +229,7 @@
           <div class="profile-widget-items">
             <div class="profile-widget-item">
               <div class="profile-widget-item-label">{{ __('Amount') }}</div>
-              <div class="profile-widget-item-value">{{ number_format($total - $info->discount,2) }}</div>
+              <div class="profile-widget-item-value">{{ number_format($total_amount - $info->discount,2) }}</div>
             </div>
             <div class="profile-widget-item">
               <div class="profile-widget-item-label">{{ __('Payment Mode') }}</div>

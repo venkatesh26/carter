@@ -230,7 +230,10 @@ $currency=\App\Options::where('key','currency_name')->select('value')->first();
 										<!-- <li><a href="#gallery" data-toggle="tab">{{ __('Gallery') }}</a></li> -->
 										<li><a href="#rating" data-toggle="tab">{{ __('Reviews') }}</a></li>
 										<li><a href="#aboutfood" data-toggle="tab">{{ __('About Food') }}</a></li>
+
+										@if(count($coupon_posts) > 0)
 										<li><a href="#coupon" data-toggle="tab">{{ __('Coupon') }}</a></li>
+										@endif
 										<!-- <li><a class="restutant_info" onclick="restaurantsinfo('{{ $store->slug }}')" href="#info" data-toggle="tab">{{ __('Restaurant Info') }}</a></li> -->
 										<input type="hidden" id="resturantinfo_url" value="{{ route('store.resturantinfo') }}">
 										@if($store->usersaas->table_book==1)
