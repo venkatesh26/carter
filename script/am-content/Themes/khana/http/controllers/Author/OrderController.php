@@ -14,8 +14,6 @@ class OrderController extends Controller
 		$id = decrypt($id);
 		$orderdetails = OrderDetails::where('order_id',$id)->get()->toArray();
         $info = Order::with('orderlist', 'orderlistpack','vendorinfo','coupon','orderlog')->find($id);
-/*        echo "<pre>";
-        print_r($info->toArray());die;*/
 		if (empty($info)) {
 			abort(404);
 		}

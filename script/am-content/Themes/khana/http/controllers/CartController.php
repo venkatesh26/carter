@@ -89,8 +89,13 @@ class CartController extends controller
 
                 Cart::instance('cart_'.Session::get('restaurant_cart')['slug'])->setGlobalDiscount($check->count);
 
+
+            
+                Cart::instance('multi_cart')->setGlobalDiscount($check->count);
+
                 Session::put('coupon', [
                    'id' => $check->id,
+                   'code' =>$request->code,
                    'percent' => $check->count
                 ]);
                 $total=Cart::instance('cart_'.Session::get('restaurant_cart')['slug'])->subtotal();
@@ -101,6 +106,15 @@ class CartController extends controller
         } else {
             return response()->json(['error'=>'Invalid Coupon',401]);
         }
+    }
+
+    public function discountDelete(Request $request)
+    {
+
+        Cart::instance('cart_'.Session::get('restaurant_cart')['slug'])->setGlobalDiscount(0);
+        Session::forget('coupon');
+        Cart::instance('multi_cart')->setGlobalDiscount(0);
+        return response()->json(['message'=>'Coupon Removed Successfully']);
     }
 
     public function cartview(Request $request)
@@ -138,10 +152,10 @@ class CartController extends controller
                 $package_price = $packages[0]['price'];
                
                 Cart::instance('multi_cart')->add([
-                    ['id' => $package_id, 'name' => $package_name, 'qty' => 1, 'price' => $package_price, 'weight' => 550]
+                    ['id' => $package_id, 'name' => $package_name, 'qty' => 1, 'price' => $package_price, 'weight' => 550, 'type'=>'package']
                 ]);
                 Session::put('multi_cart_data', [
-                    ['id' => $package_id, 'name' => $package_name, 'qty' => 1, 'price' => $package_price, 'weight' => 550]
+                    ['id' => $package_id, 'name' => $package_name, 'qty' => 1, 'price' => $package_price, 'weight' => 550,  'type'=>'package']
                 ]);
             }
         }
@@ -159,10 +173,10 @@ class CartController extends controller
                     $addon_name = $addon_row['name'];
                     $addon_price = $addon_row['price'];
                     Cart::instance('multi_cart')->add([
-                        ['id' => $addon_id, 'name' => $addon_name, 'qty' => 1, 'price' => $addon_price, 'weight' => 550, 'options' => ['addon_id' => $addon_id]]
+                        ['id' => $addon_id, 'name' => $addon_name, 'qty' => 1, 'price' => $addon_price, 'weight' => 550,  'type'=>'addon', 'options' => ['addon_id' => $addon_id]]
                     ]);
                     Session::put('multi_cart_data', [
-                        ['id' => $addon_id, 'name' => $addon_name, 'qty' => 1, 'price' => $addon_price, 'weight' => 550, 'options' => ['addon_id' => $addon_id]]
+                        ['id' => $addon_id, 'name' => $addon_name, 'qty' => 1, 'price' => $addon_price, 'weight' => 550, 'type'=>'addon', 'options' => ['addon_id' => $addon_id]]
                     ]);
                 }
             }
@@ -181,9 +195,6 @@ class CartController extends controller
 
         $cart_details = Cart::instance('multi_cart')->content();
 
-        // print_r($cart_details);
-
-         // print_r(count($cart_details) );
 
         $package = new Package();
         $AddonItems = new AddonItems();

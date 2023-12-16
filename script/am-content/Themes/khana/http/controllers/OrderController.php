@@ -40,6 +40,11 @@ class OrderController extends controller
             return redirect()->route('author.dashboard')->with('error', 'Order Failed!');
         }
         $replace_total=str_replace(',', '', Cart::instance('cart_'.Session::get('restaurant_cart')['slug'])->subtotal());
+         $replace_total=str_replace(',', '', Cart::instance('multi_cart')->total());
+ Cart::instance('multi_cart')->content();
+
+  $replace_total = Cart::subtotal();
+
         $request->validate([
             'name' => 'required|max:255',
             'phone' => 'required|numeric',
@@ -82,8 +87,9 @@ class OrderController extends controller
         if (!empty($request->shipping)) {
             $order->shipping = $shipping;
         }
-        $order->discount = Cart::instance('cart_'.Session::get('restaurant_cart')['slug'])->discount();
+        //$order->discount = Cart::instance('cart_'.Session::get('restaurant_cart')['slug'])->discount();
 
+$order->discount = Cart::instance('multi_cart')->discount();
         $data['name']=$request->name;
         $data['phone']=$request->phone;
         $data['address']=$request->delivery_address;
@@ -106,6 +112,7 @@ class OrderController extends controller
         $order->data = json_encode($data);
 
         $order->total = $replace_total;
+        $order->grand_total = $replace_total;
         $order->save();
 
         $totalValue = 0;
@@ -138,10 +145,12 @@ class OrderController extends controller
             $ordermeta->term_id  = $row->id;
             $ordermeta->qty  = $row->qty;
             $ordermeta->total  = $row->price;
+            $ordermeta->type  = $row->type ?? 'package'; 
             $ordermeta->save();
             $totalValue += $row->price * $row->qty;
         }
-        $order->total = $totalValue;
+        $order->total = $replace_total;
+        $order->grand_total = $totalValue+$shipping;
         $order->save();
 
 
@@ -155,7 +164,11 @@ class OrderController extends controller
         $data['vendor_id']=$order->vendor_id;
         $data['amount']= str_replace(",","",number_format($total,2));
 
-        $data['amount']= $totalValue;
+        $data['grand_total']= $totalValue;
+
+        $data['discount']= Cart::instance('multi_cart')->discount();
+
+        $data['amount']=$replace_total + $shipping;
         $data['email']=Auth::user()->email;
         $data['name']=Auth::user()->name;
 
@@ -220,6 +233,10 @@ class OrderController extends controller
 
     public function stripe_view()
     {
+
+       // echo "<pre>";
+     //   print_r(Session::get('order_info'));
+ //      echo "d";die;
       return view('theme::checkout.payment.stripe');
     }
 

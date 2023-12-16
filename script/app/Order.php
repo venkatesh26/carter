@@ -15,7 +15,7 @@ class Order extends Model
     
     public function orderlistpack()
     {
-        return $this->hasMany('App\Ordermeta')->with('packages');
+        return $this->hasMany('App\Ordermeta')->where('type', '=', 'package')->with('packages', 'orderItems');
     }
 
     public function vendorinfo()

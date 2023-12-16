@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\User;
 use Session;
-use Cart;
+//use Cart;
 use App\Order;
 use App\Ordermeta;
 use App\OrderDetails;
@@ -16,7 +16,8 @@ use OneSignal;
 use Amcoders\Plugin\Plugin;
 use Cartalyst\Stripe\Laravel\Facades\Stripe;
 use Carbon\Carbon;
-
+//use Cart;
+use Gloudemans\Shoppingcart\Facades\Cart;
 
 class CheckoutController extends Controller
 {
@@ -48,10 +49,10 @@ class CheckoutController extends Controller
             }
 
             return view('theme::checkout.index',compact('resturent_info','json','currency','ordertype','km_rate','credentials'));
-        }else{
+        }
+        else {
             return back();
         }
-
     }
 
     public function type(Request $request)

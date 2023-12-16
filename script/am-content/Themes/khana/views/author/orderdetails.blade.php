@@ -36,7 +36,7 @@
 
 								?> @foreach($info["orderlistpack"] as $key => $itemrow) <?php
 										$item_list=[];
-										foreach($itemrow["packages"]["orderItems"] as $key1 => $itemrow1){
+										foreach($itemrow["orderItems"] as $key1 => $itemrow1){
 											array_push($item_list, $itemrow1["product_name"]);
 										}
 										$item_list_str = implode(',', $item_list);
@@ -64,6 +64,14 @@
                     <h4>Billing Details</h4>
                   </div>
                   <div class="profile-widget-description price-section">
+                     <div class="profile-widget-name" style="border-bottom:1px solid #ddd"> {{ __('Grand Total') }}
+                      <div class="text-muted d-inline font-weight-normal" style="float:right">{{ strtoupper($currency->value) }} {{ $info->grand_total ?? '' }}</div>
+                    </div>
+                     @if($info->coupon_id != null)
+                       <div class="profile-widget-name" style="border-bottom:1px solid #ddd"> {{ __('Discount') }}
+                        <div class="text-muted d-inline font-weight-normal" style="float:right">{{ strtoupper($currency->value) }} {{ $info->discount ?? '' }}</div>
+                      </div>
+                    @endif
                     <div class="profile-widget-name" style="border-bottom:1px solid #ddd"> {{ __('Amount Due') }}
                       <div class="text-muted d-inline font-weight-normal" style="float:right">{{ strtoupper($currency->value) }} {{ $balanceAmount ?? '' }}</div>
                     </div>
@@ -77,13 +85,6 @@
                 </div>
               </div>
 
-               @if($info->coupon_id != null) <p>
-                <b>Discount Code: </b> {{ $info->coupon->title ?? '' }}
-              </p>
-              <p>
-                <b>Discount: </b> {{ strtoupper($currency->value) }}{{ $info->discount }}
-              </p> @endif
-              <!-- <p><b>Total: </b>  {{ strtoupper($currency->value) }}{{ $info->total+$info->shipping }}</p> -->
             </div>
           </div>
         </div>

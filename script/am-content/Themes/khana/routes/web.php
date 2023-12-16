@@ -29,6 +29,8 @@ Route::group(['namespace'=>'Amcoders\Theme\khana\http\controllers','middleware'=
 
 	Route::post('coupon','CartController@discount')->name('coupon');
 
+	Route::post('couponDelete','CartController@discountDelete')->name('couponDelete');
+
 	Route::get('cart/update','CartController@update')->name('cart.update');
 
 	Route::get('cart/delete','CartController@delete')->name('cart.delete');

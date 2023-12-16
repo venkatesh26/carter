@@ -8,6 +8,7 @@
 		<h4 class="ale">{{ __('Your Settings Successfully Updated') }}</h4>
 	</div>
 </div>
+
 <!-- success-alert end -->
 
 <!-- error-alert start -->
@@ -225,6 +226,7 @@
 											</div>
 										</div>
 									</div>
+									
 									@foreach(Cart::instance('multi_cart')->content() as $cart)
 										<div class="single-order-product-info d-flex">
 
@@ -263,16 +265,22 @@
 								@endforeach
 							</div>
 							<div class="product-another-info-show">
+
+
+								@if(Cart::discount() > 0)
+								<div class="single-product-another-info-show d-flex">
+									<span class="product-another" style="color: #2AAA8A;font-weight: bold;">{{ __('Discount') }} ( {{ Session::get('coupon')['percent'] }}%)</span>
+									<span class="product-price" style="color: #2AAA8A;font-weight: bold;">&euro;: {{ Cart::discount() }} <span id="delivery_fee"></span></span>
+								</div>
+								@endif
+
+
 								<div class="single-product-another-info-show d-flex">
 									<span class="product-another">{{ __('Subtotal') }}</span>
 									<span class="product-price">&euro;: {{ Cart::subtotal() }}</span>
 								</div>
-								@if(Session::has('coupon'))
-								<div class="single-product-another-info-show d-flex">
-									<span class="product-another">{{ __('Discount') }}</span>
-									<span class="product-price">{{ Session::get('coupon')['percent'] }}%</span>
-								</div>
-								@endif
+
+
 								<!-- @if($ordertype == 1)
 								<div class="single-product-another-info-show d-flex">
 									<span class="product-another">{{ __('Delivery fee') }}</span>
@@ -312,10 +320,10 @@
 							</div>
 						</div>
 						@if(!Session::has('coupon'))
-						<!-- <div class="checkout-right-section mt-35">
-							<form action="{{ route('coupon') }}" method="POST" id="couponform"> -->
+						 <div class="checkout-right-section mt-35">
+							<form action="{{ route('coupon') }}" method="POST" id="couponform">
 								@csrf
-								<!-- <div class="apply-coupon">
+								 <div class="apply-coupon">
 									<div class="form-group">
 										<label>{{ __('Enter Coupon Code') }}</label>
 										<div class="d-flex">
@@ -323,9 +331,25 @@
 											<button type="submit">{{ __('Apply') }}</button>
 										</div>
 									</div>
-								</div> -->
-							<!-- </form>
-						</div> -->
+								</div>
+							 </form>
+						</div> 
+						@endif
+						@if(Session::has('coupon'))
+
+							<div class="checkout-right-section mt-35">
+								<form action="{{ route('couponDelete') }}" method="POST" id="coupondelete">
+									@csrf
+									 <div class="apply-coupon">
+										<div class="form-group">
+											<label style="color: #2AAA8A;font-weight: bold;">{{ Session::get('coupon')['code'] ?? 'Coupon ' }}   {{ __('Code Appllied Sucesssfully') }}</label>
+											<div class="d-flex">
+												<button type="submit">{{ __('Remove') }}</button>
+											</div>
+										</div>
+									</div>
+								 </form>
+							</div> 
 						@endif
 					</div>
 				</div>
@@ -345,8 +369,10 @@
 		$('#place_order_button').attr('disabled','');
 		$('#place_order_button').html('Please wait....');
 	 });
-	 	//coupon form submit
-		 $('#couponform').on('submit',function(e){
+	
+	//coupon form submit
+	$('#couponform').on('submit',function(e){
+		alert(1);
     	e.preventDefault();
     	$.ajaxSetup({
     		headers: {
@@ -369,7 +395,7 @@
     				$('.alert-message-area').fadeIn();
     				$('.ale').html(response.message);
     				$(".alert-message-area").delay( 2000 ).fadeOut( 2000 );
-    				window.location.reload();
+    				//window.location.reload();
     			}
 
     			if(response.error)
@@ -392,6 +418,47 @@
     		}
     	})
     });
+
+    $('#coupondelete').on('submit',function(e){
+		e.preventDefault();
+    	$.ajaxSetup({
+    		headers: {
+    			'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+    		}
+    	});
+    	$.ajax({
+    		type: 'POST',
+			url: this.action,
+			data: new FormData(this),
+    		dataType: 'json',
+    		contentType: false,
+    		cache: false,
+    		processData:false,
+
+    		success: function(response){
+    			if(response.message)
+    			{
+    				$('#checkout_right').load(' #checkout_right');
+    				$('.alert-message-area').fadeIn();
+    				$('.ale').html(response.message);
+    				$(".alert-message-area").delay( 2000 ).fadeOut( 2000 );
+    				//window.location.reload();
+    			}
+
+    		},
+    		error: function(xhr, status, error)
+    		{
+    			$('.errorarea').show();
+    			$.each(xhr.responseJSON.errors, function (key, item)
+    			{
+    				Sweet('error',item)
+    				$("#errors").html("<li class='text-danger'>"+item+"</li>")
+    			});
+    			errosresponse(xhr, status, error);
+    		}
+    	});
+
+	});
 
 // $("body").on("contextmenu",function(e){
 // return false;
