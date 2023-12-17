@@ -79,10 +79,12 @@ $total_amount = $info->total;
                     <h4>Billing Details</h4>
                   </div>
                   <div class="profile-widget-description price-section">
-                    <div class="profile-widget-name" style="border-bottom:1px solid #ddd"> {{ __('Grand Total') }}
-                      <div class="text-muted d-inline font-weight-normal" style="float:right">{{ strtoupper($currency->value) }} {{ $info->grand_total ?? '' }}</div>
-                    </div>
-                     @if($info->coupon_id != null)
+                    @if(isset($info->grand_total) && $info->grand_total >0)
+                      <div class="profile-widget-name" style="border-bottom:1px solid #ddd"> {{ __('Grand Total') }}
+                        <div class="text-muted d-inline font-weight-normal" style="float:right">{{ strtoupper($currency->value) }} {{ $info->grand_total ?? '' }}</div>
+                      </div>
+                    @endif
+                    @if(isset($info->discount) && $info->discount >0)
                        <div class="profile-widget-name" style="border-bottom:1px solid #ddd"> {{ __('Discount') }}
                         <div class="text-muted d-inline font-weight-normal" style="float:right">{{ strtoupper($currency->value) }} {{ $info->discount ?? '' }}</div>
                       </div>

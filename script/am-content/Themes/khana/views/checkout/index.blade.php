@@ -365,14 +365,17 @@
 @endsection
 @push('js')
  <script>
+ 	$(document).ready(function() {
+
 	 $('#place_order_form').on('submit',function(){
 		$('#place_order_button').attr('disabled','');
 		$('#place_order_button').html('Please wait....');
 	 });
 	
 	//coupon form submit
-	$('#couponform').on('submit',function(e){
-		alert(1);
+//	$('#couponform').on('submit',function(e){
+
+		$(document).on('submit', '#couponform', function(e) {
     	e.preventDefault();
     	$.ajaxSetup({
     		headers: {
@@ -419,7 +422,9 @@
     	})
     });
 
-    $('#coupondelete').on('submit',function(e){
+ 
+    	$(document).on('submit', '#coupondelete', function(e) {
+
 		e.preventDefault();
     	$.ajaxSetup({
     		headers: {
@@ -459,6 +464,7 @@
     	});
 
 	});
+});	
 
 // $("body").on("contextmenu",function(e){
 // return false;
