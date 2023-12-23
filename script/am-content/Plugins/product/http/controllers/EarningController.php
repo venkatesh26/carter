@@ -44,6 +44,7 @@ class EarningController extends controller
 
 	public function delivery(Request $request)
 	{
+
 		if (!Auth()->user()->can('earning.delivery.report')) {
 			return abort(401);
 		}
@@ -75,11 +76,11 @@ class EarningController extends controller
 		if (!Auth()->user()->can('earning.subscription.report')) {
 			return abort(401);
 		}
-		$total_earnings = Userplan::where('status',1)->sum('amount'); 
-		$orders = Userplan::where('status',1)->latest()->paginate(20); 
-		$monthly_earnings =  Userplan::where('status',1)->whereMonth('created_at', Carbon::now()->month)->sum('amount');
-		$year_earnings =  Userplan::where('status',1)->whereYear('created_at', Carbon::now()->year)->sum('amount');
-		$today_earnings = Userplan::where('status',1)->whereDate('created_at', Carbon::today())->sum('amount');
+		$total_earnings = Userplan::where('status','Success')->sum('amount'); 
+		$orders = Userplan::where('status','Success')->latest()->paginate(20); 
+		$monthly_earnings =  Userplan::where('status','Success')->whereMonth('created_at', Carbon::now()->month)->sum('amount');
+		$year_earnings =  Userplan::where('status','Success')->whereYear('created_at', Carbon::now()->year)->sum('amount');
+		$today_earnings = Userplan::where('status','Success')->whereDate('created_at', Carbon::today())->sum('amount');
 		
 		return view('plugin::admin.earning.saas',compact('total_earnings','monthly_earnings','year_earnings','today_earnings','orders'));
 	}

@@ -126,6 +126,7 @@
 @section('content')
 @php
 $currency=\App\Options::where('key','currency_name')->select('value')->first();
+
 @endphp
 
 <!-- success-alert start -->
@@ -245,14 +246,14 @@ $currency=\App\Options::where('key','currency_name')->select('value')->first();
 												<div class="col-lg-12 col-12 mb-20">
 													<div class="package-info-cont">
 
-														<h4>{{$customPackage["category_name"]}} {{Cart::instance('multi_cart')->count()}} <span class="pick-info">(Pick any {{$customPackage['no_of_items']}} {{$customPackage['no_of_items']>1?"items":"item"}} from {{count($customPackage['items'])}} items)</span></h4>
+														<h4>{{$customPackage["category_name"]}} <span class="pick-info">(Pick any {{$customPackage['no_of_items']}} {{$customPackage['no_of_items']>1?"items":"item"}} from {{count($customPackage['items'])}} items)</span></h4>
 													</div>
 												</div>
 												@foreach($customPackage['items'] as $items)
 													<div class="col-lg-3 col-6 mb-20">
 														<div class="form-check">
-															<input class="form-check-input" type="checkbox" value="{{$items['id']}}" id="items" name="{{$items['package_category_id']}}" data-maxitemselection="{{$customPackage['no_of_items']}}" data-itemName="{{$items['name']}}" data-category="{{$customPackage['category_name']}}" />
-														  	<label class="form-check-label" for="flexCheckDefault">{{$items['name']}}</label>
+															<input class="form-check-input" type="checkbox" value="{{$items['id']}}" id="{{$items['package_id']}}-{{$items['id']}}" name="{{$items['package_category_id']}}" data-maxitemselection="{{$customPackage['no_of_items']}}" data-itemName="{{$items['name']}}" data-category="{{$customPackage['category_name']}}" />
+														  	<label class="form-check-label" for="{{$items['package_id']}}-{{$items['id']}}">{{$items['name']}}</label>
 														</div>
 													</div>
 												@endforeach
@@ -270,8 +271,8 @@ $currency=\App\Options::where('key','currency_name')->select('value')->first();
 										@foreach($addon_items as $addon_row)
 											<div class="col-lg-3 col-6 mb-20">
 												<div class="form-check">
-													<input class="form-check-input addon_checkbox" type="checkbox" value="{{$addon_row['id']}}" id="addon_item" name="{{$addon_row['id']}}" data-price="{{$addon_row['price']}}" data-addonId="{{$addon_row['id']}}" data-addonName="{{$addon_row['name']}}" />
-													<label class="form-check-label" for="flexCheckDefault">{{$addon_row['name']}}</label>
+													<input class="form-check-input addon_checkbox" type="checkbox" value="{{$addon_row['id']}}" id="add-{{$addon_row['id']}}" name="{{$addon_row['id']}}" data-price="{{$addon_row['price']}}" data-addonId="{{$addon_row['id']}}" data-addonName="{{$addon_row['name']}}" />
+													<label class="form-check-label" for="add-{{$addon_row['id']}}">{{$addon_row['name']}}</label>
 												</div>
 											</div>
 										@endforeach
